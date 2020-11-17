@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,15 +28,66 @@
    <link rel="stylesheet" href="css/main.css">
    <script defer src="js/main.js"></script>
 </head>
+
 <body>
-<div class="wrapper">
-   <header class="header">
-      <div class="header__body">
-         <a href="#" class="header__logo-link">
-            <img src="img/logo.png" alt="Globe logo" class="header__logo-img">
-         </a>
-      </div>
-   </header>
-</div>
+   <div class="wrapper">
+      <!--Header starts-->
+      <header class="header">
+         <div class="header__body">
+            <a href="#" class="header__logo"></a>
+            <div class="header__dark-mode">
+               <button class="header__dark-mode-btn">
+                  <img src="img/icons/moon.svg" alt="" class="header__dark-mode-icon">
+                  <img src="img/icons/moon-dark.svg" alt="" class="header__dark-mode-icon header__dark-mode-icon--dark">
+                  Dark Mode
+               </button>
+            </div>
+         </div>
+      </header>
+      <!--Header ends-->
+      <main>
+         <h1 class="heading-1">
+            <span>Welcome to a</span>
+            <span>Country Journal</span>
+         </h1>
+         <!--Search block starts-->
+         <section class="search-block">
+            <div class="container">
+               <form class="search-form" type=submit>
+                  <div class="search-form__body">
+                     <input type="text" class="search-form__input-search" placeholder="Search for a country..."
+                        id="search">
+                     <!--<label for="search" class="search-form__input-search-label">Search for a country...</label>-->
+                  </div>
+               </form>
+               <div class="dropdown">
+                  <button class="dropdown__btn">
+                     Filter By Region
+                     <img class="dropdown__icon" src="img/icons/arrow-down.svg" alt="arrow-down">
+                  </button>
+                  <ul class="dropdown__list">
+                     <li>
+                        <a href="#" class="dropdown__link">Africa</a>
+                     </li>
+                     <li>
+                        <a href="#" class="dropdown__link">Amerika</a>
+                     </li>
+                     <li>
+                        <a href="#" class="dropdown__link">Asia</a>
+                     </li>
+                     <li>
+                        <a href="#" class="dropdown__link">Europe</a>
+                     </li>
+                     <li>
+                        <a href="#" class="dropdown__link">Oceania</a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </section>
+         <!--Search block ends-->
+      </main>
+   </div>
 </body>
+
 </html>
