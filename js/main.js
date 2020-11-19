@@ -11,6 +11,10 @@ const runScript = () => {
 
    // event listeners
    dropdownBtn.addEventListener("click", toggleDropdown);
+
+   fetch("https://restcountries.eu/rest/v2/name/ukraine")
+      .then(response => response.json())
+      .then(data => console.log(data[0]));
 };
 
 if (document.readyState === "loading") {

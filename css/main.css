@@ -78,6 +78,8 @@ body {
 
 .container {
     padding: 0 1.3rem;
+    margin: 0 auto;
+    max-width: 144rem;
 }
 
 .heading-1 {
@@ -85,6 +87,12 @@ body {
     font-size: calc(20px + 18 * ((100vw - 320px) / (1920 - 320)));
     text-align: center;
     margin-bottom: 1.4rem;
+}
+
+@media (min-width: 48em) {
+    .heading-1 {
+        margin-bottom: 2rem;
+    }
 }
 
 /* Header */
@@ -168,6 +176,27 @@ body {
 
 .search-block {}
 
+@media (min-width: 48em) {
+    .search-block {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.search-block__body {
+    /*display: flex;
+    align-items: stretch;
+    flex-direction: column; */
+}
+
+@media (min-width: 48em) {
+    .search-block__body {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        padding: 0 2rem;
+    }
+}
+
 .search-form {
     padding: 1rem;
     background-color: var(--color-white);
@@ -183,6 +212,24 @@ body {
     padding: .7rem 0 .7rem 1.5rem;
     width: 100%;
     transition: all .3s ease-in-out;
+}
+
+@media (min-width: 48em) {
+    .search-form__input-search {
+        width: 32rem;
+    }
+}
+
+@media (min-width: 62em) {
+    .search-form__input-search {
+        width: 40rem;
+    }
+}
+
+@media (min-width: 75em) {
+    .search-form__input-search {
+        width: 45rem;
+    }
 }
 
 .search-form__input-search::placeholder {
@@ -206,6 +253,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: stretch;
+    position: relative;
 }
 
 .dropdown__btn {
@@ -221,24 +269,41 @@ body {
     margin-bottom: 0.6rem;
 }
 
+@media (min-width: 48em) {
+    .dropdown__btn {
+        padding: 1.4rem 3.3rem;
+    }
+}
+
+@media (min-width: 62em) {
+    .dropdown__btn {
+        padding: 1.7rem 5.3rem;
+    }
+}
+
 .dropdown__icon {
     width: 1.2rem;
     margin-left: 1rem;
 }
 
 .dropdown__list {
+    position: absolute;
+    top: 5.8rem;
+    right: 0;
     padding: 1rem;
+    width: 100%;
     background-color: var(--color-white);
     filter: drop-shadow(0 0 0.35rem var(--color-dark-blue));
     border-radius: 1.5rem;
-    opacity: 0;
-    visibility: hidden;
+    display: none;
     transition: all .3s ease-in-out;
+    margin-bottom: 1rem;
+    z-index: 2;
+    animation: fade ease-in-out .3s;
 }
 
 .dropdown__list.show {
-    opacity: 1;
-    visibility: visible;
+    display: block;
 }
 
 .dropdown__item {}
@@ -255,10 +320,113 @@ body {
     transform: scale(1.02);
 }
 
+/* Coutntry card */
+.countries {
+    padding-top: 1rem;
+    margin: 0 auto;
+}
+
+.countries__body {
+    /*  display: flex;
+      flex-direction: column;
+      background-color: var(--color-white);
+      border: 1px solid var(--color-lighter-blue);
+      border-radius: 1.5rem;
+      filter: drop-shadow(0 0 0.35rem var(--color-dark-blue));
+      margin: 0 auto;
+      cursor: pointer;
+      overflow: hidden; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+@media (min-width: 39em) {
+    .countries__body {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.countries__card {
+    border: 1px solid var(--color-lighter-blue);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    max-width: 30rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 39em) {
+    .countries__card {
+        margin-right: 1.2rem;
+    }
+
+    .countries__card:last-child {
+        margin-right: 0;
+    }
+}
+
+.countries__flag {
+    position: relative;
+}
+
+.countries__img {
+    height: 14rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (min-width: 48em) {
+    .countries__img {
+        height: 20rem;
+    }
+}
+
+.countries__country-info {
+    padding: 2rem;
+}
+
+.countries__country-info > * {
+    margin-bottom: 1rem;
+}
+
+.countries__country-info > *:last-child {
+    margin-bottom: 0;
+}
+
+.countries__title {
+    font-size: 2rem;
+    margin-bottom: 1.9rem;
+}
+
+.countries__country-feature {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.countries__country-feature--description {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-left: .4rem;
+}
+
 /* Animation */
 
 @keyframes animateEarth {
     100% {
         background-position: 100%;
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
