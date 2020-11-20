@@ -1,6 +1,7 @@
 "use strict"
 
 const runScript = () => {
+   //global variables
    const countryCardsContainer = document.querySelector(".countries__body"),
       searchForm = document.querySelector(".search-form");
 
@@ -22,7 +23,19 @@ const runScript = () => {
       return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
    };
 
-  
+   //toggle dark/light mode of App on click
+   const toggleAppMode = () => {
+      const modeChangeBtn = document.querySelector(".header__dark-mode-btn");
+
+      modeChangeBtn.addEventListener("click", () => {
+         document.body.classList.toggle("dark-mode");
+      })
+   };
+
+   fetch("https://restcountries.eu/rest/v2/name/ukraine")
+      .then(response => response.json())
+      .then(data => console.log(data[0]));
+
    // get and handle recived country data from API
    const getCountryData = () => {
       axios.get("https://restcountries.eu/rest/v2/all")
@@ -84,6 +97,7 @@ const runScript = () => {
    //call functions
    showDropdownMenu();
    getCountryData();
+   toggleAppMode();
 };
 
 if (document.readyState === "loading") {
