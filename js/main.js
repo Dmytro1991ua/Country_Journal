@@ -3,7 +3,8 @@
 const runScript = () => {
    //global variables
    const countryCardsContainer = document.querySelector(".countries__body"),
-      searchForm = document.querySelector(".search-form");
+      searchForm = document.querySelector(".search-form"),
+      searchInput = document.querySelector(".search-form__input-search");
 
    // Show and hide dropdown menu onclick
    const showDropdownMenu = () => {
@@ -47,7 +48,6 @@ const runScript = () => {
 
    // render country cards based on recived data from API
    const renderCountryCard = (countries) => {
-
       countries.forEach(country => { //iterate over recived countries data to render a specific card with info
 
          const countryDeatils = `
@@ -86,12 +86,22 @@ const runScript = () => {
    //event listeners
    searchForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      const searchValue = document.querySelector(".search-form__input-search").value;
-      const searchedCountry = searchValue.toLowerCase().trim();
       searchForm.reset();
+   });
 
-      renderCountryCard(searchedCountry);
+   searchInput.addEventListener("keyup", (event) => {
+      const target = event.target.value; // get a whatever value typed in an input field
+      const countriesName = document.querySelectorAll(".countries__title");
 
+      countriesName.forEach(countryName => { // iterate pver country names
+         if (countryName.innerText.toLowerCase().trim().includes(target.toLowerCase())) { // if the name of the country includes typed value from input, then show the whole country card
+
+            countryName.parentElement.parentElement.style.display = "block"; // traverse the DOM to grab a a parent (<a> - country card)
+
+         } else {
+            countryName.parentElement.parentElement.style.display = "none";
+         }
+      });
    });
 
    //call functions
