@@ -4,7 +4,9 @@ const runScript = () => {
    //global variables
    const countryCardsContainer = document.querySelector(".countries__body"),
       searchForm = document.querySelector(".search-form"),
-      searchInput = document.querySelector(".search-form__input-search");
+      searchInput = document.querySelector(".search-form__input-search"),
+      regionFilters = document.querySelectorAll(".dropdown__link");
+
 
    // Show and hide dropdown menu onclick
    const showDropdownMenu = () => {
@@ -33,7 +35,7 @@ const runScript = () => {
       })
    };
 
-   fetch("https://restcountries.eu/rest/v2/name/ukraine")
+   fetch("https://restcountries.eu/rest/v2/name/mexico")
       .then(response => response.json())
       .then(data => console.log(data[0]));
 
@@ -61,7 +63,7 @@ const runScript = () => {
                      <p class="countries__country-feature">Population:<span
                               class="countries__country-feature--description">${commaSeparation(country.population)}</span>
                      </p>
-                     <p class="countries__country-feature">Region:<span
+                     <p class="countries__country-feature" id="region">Region:<span
                               class="countries__country-feature--description">${country.region}</span></p>
                      <p class="countries__country-feature">Capital:<span
                               class="countries__country-feature--description">${country.capital}</span>
@@ -83,31 +85,61 @@ const runScript = () => {
       }
    };
 
+   // Search a specific country by typing it in the search input field
+   const searchCountry = (event) => {
+      const target = event.target.value.toLowerCase(); // get a whatever value typed in an input field
+      const countriesName = document.querySelectorAll(".countries__title");
+
+      countriesName.forEach(countryName => { // iterate pver country names
+         const countryCard = countryName.parentElement.parentElement;
+
+         if (countryName.textContent.toLowerCase().trim().includes(target)) { // if the name of the country includes typed value from input, then show the whole country card
+
+            countryCard.style.display = "block"; // traverse the DOM to grab a a parent (<a> - country card)
+
+         } else {
+            countryCard.style.display = "none";
+         }
+      });
+   };
+
+   // filter country by a specific region on click to a dropdown link
+   const regionFilter = () => {
+      regionFilters.forEach(dropdownLink => {
+         dropdownLink.addEventListener("click", () => {
+            const ul = dropdownLink.parentElement.parentElement;
+            ul.classList.toggle("show"); // hide whole <ul> parent on click to a specific dropdown link
+
+            const regionNames = document.querySelectorAll("#region");
+            const dropdownLinkValue = dropdownLink.textContent.toLowerCase();
+
+            regionNames.forEach(regionName => {
+               const countryCard = regionName.parentElement.parentElement;
+
+               if (regionName.textContent.toLowerCase().trim().includes(dropdownLinkValue) || dropdownLinkValue === "all") {
+                  countryCard.style.display = "block";
+               } else {
+                  countryCard.style.display = "none";
+               }
+            });
+         });
+      });
+   };
+
    //event listeners
    searchForm.addEventListener("submit", (event) => {
       event.preventDefault();
       searchForm.reset();
    });
 
-   searchInput.addEventListener("keyup", (event) => {
-      const target = event.target.value; // get a whatever value typed in an input field
-      const countriesName = document.querySelectorAll(".countries__title");
+   searchInput.addEventListener("keyup", searchCountry);
 
-      countriesName.forEach(countryName => { // iterate pver country names
-         if (countryName.innerText.toLowerCase().trim().includes(target.toLowerCase())) { // if the name of the country includes typed value from input, then show the whole country card
-
-            countryName.parentElement.parentElement.style.display = "block"; // traverse the DOM to grab a a parent (<a> - country card)
-
-         } else {
-            countryName.parentElement.parentElement.style.display = "none";
-         }
-      });
-   });
 
    //call functions
    showDropdownMenu();
    getCountryData();
    toggleAppMode();
+   regionFilter();
 };
 
 if (document.readyState === "loading") {

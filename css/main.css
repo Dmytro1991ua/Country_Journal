@@ -188,18 +188,19 @@ body.dark-mode .header__dark-mode-btn {
 
 .header__dark-mode-icon--light {
     margin-right: 1.4rem;
+    display: none;
 }
 
 .header__dark-mode-icon--dark {
-    display: none;
+    margin-right: 1.4rem;
 }
 
 body.dark-mode .header__dark-mode-icon--light {
-    display: none;
+    display: inline-block;
 }
 
 body.dark-mode .header__dark-mode-icon--dark {
-    display: inline-block;
+    display: none;
     margin-right: 1.4rem;
 }
 
@@ -312,13 +313,13 @@ body.dark-mode .dropdown__btn {
 
 @media (min-width: 48em) {
     .dropdown__btn {
-        padding: 1.4rem 3.3rem;
+        padding: 1.4rem 3.3rem 1.4rem 2rem;
     }
 }
 
 @media (min-width: 62em) {
     .dropdown__btn {
-        padding: 1.7rem 5.3rem;
+        padding: 1.7rem 5.3rem 1.7rem 2rem;
     }
 }
 
@@ -411,7 +412,6 @@ body.dark-mode .dropdown__link:hover {
 
 body.dark-mode .countries__card {
     border: 3px solid var(--color-mantis);
-    color: var(--color-mantis-darker);
 }
 
 @media (min-width: 39em) {
@@ -457,6 +457,10 @@ body.dark-mode .countries__card {
     padding: 2rem;
 }
 
+body.dark-mode .countries__country-info {
+    color: var(--color-white);
+}
+
 .countries__country-info > * {
     margin-bottom: 1rem;
 }
@@ -468,6 +472,10 @@ body.dark-mode .countries__card {
 .countries__title {
     font-size: 2rem;
     margin-bottom: 1.9rem;
+}
+
+body.dark-mode .countries__title {
+    color: var(--color-mantis-darker);
 }
 
 .countries__country-feature {
