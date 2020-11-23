@@ -35,7 +35,7 @@ const runScript = () => {
       })
    };
 
-   fetch("https://restcountries.eu/rest/v2/name/mexico")
+   fetch("https://restcountries.eu/rest/v2/name/afganistan")
       .then(response => response.json())
       .then(data => console.log(data[0]));
 
@@ -56,7 +56,7 @@ const runScript = () => {
          <!--Card starts-->
               <a class="countries__card">
                   <figure class="countries__flag">
-                     <img src="${country.flag}" alt="country flag" class="countries__img">
+                     <img src="${country.flag}" alt="country flag" class="countries__img" loading="lazy">
                   </figure>
                   <div class="countries__country-info">
                      <h3 class="countries__title">${country.name}</h3>
