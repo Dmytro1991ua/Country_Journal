@@ -65,8 +65,7 @@ body {
     box-sizing: border-box;
     position: relative;
     background-color: var(--color-floral-white);
-
-    /*color: var(--color-white);*/
+    position: relative;
     font-family: 'Space Grotesk', sans-serif;
 }
 
@@ -406,7 +405,7 @@ body.dark-mode .dropdown__link:hover {
     border-radius: 1.5rem;
     overflow: hidden;
     max-width: 30rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 1px 5px rgba(0, 0, 0, 0.3);
 }
 
@@ -427,6 +426,7 @@ body.dark-mode .countries__card {
 @media (min-width: 48em) {
     .countries__card {
         margin-bottom: 1.6rem;
+        min-height: 40rem;
     }
 }
 
@@ -442,15 +442,9 @@ body.dark-mode .countries__card {
 }
 
 .countries__img {
-    height: 14rem;
+    height: 20rem;
     width: 100%;
     object-fit: cover;
-}
-
-@media (min-width: 48em) {
-    .countries__img {
-        height: 20rem;
-    }
 }
 
 .countries__country-info {
@@ -487,6 +481,172 @@ body.dark-mode .countries__title {
     font-size: 1.3rem;
     font-weight: 400;
     margin-left: .4rem;
+}
+
+/* Modal window */
+.country-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-floral-white);
+    z-index: 5;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease-in-out;
+}
+
+.country-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.country-modal__close {
+    position: absolute;
+    top: -0.2rem;
+    right: 1rem;
+    border: none;
+    font-size: 3rem;
+    background-color: transparent;
+    transition: all .3s ease-in-out;
+}
+
+.country-modal__close:hover {
+    transform: scale(1.03);
+}
+
+@media (min-width: 39em) {
+    .country-modal__close {
+        right: 3rem;
+        font-size: 4rem;
+    }
+}
+
+@media (min-width: 48em) {
+    .country-modal__close {
+        right: 9rem;
+        font-size: 5rem;
+    }
+}
+
+@media (min-width: 75em) {
+    .country-modal__close {
+        top: 3rem;
+        right: 10rem;
+        font-size: 6rem;
+    }
+}
+
+.country-modal__body {
+    background-color: var(--color-white);
+    filter: drop-shadow(0 0 0.35rem var(--color-dark-blue));
+    border-radius: 1.3rem;
+    width: 93%;
+    max-width: 40rem;
+    overflow: hidden;
+    border: 2px solid var(--color-dark-blue);
+}
+
+@media (min-width: 39em) {
+    .country-modal__body {
+        width: 100%;
+        max-width: 40rem;
+    }
+}
+
+@media (min-width: 75em) {
+    .country-modal__body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        max-width: 80rem;
+    }
+}
+
+@media (min-width: 90em) {
+    .country-modal__body {
+        max-width: 90rem;
+    }
+}
+
+.country-modal__flag {
+    position: relative;
+    overflow: hidden;
+}
+
+@media (min-width: 75em) {
+    .country-modal__flag {
+        margin-right: 3rem;
+        border-radius: 1.5rem;
+    }
+}
+
+.country-modal__img {
+    height: 17rem;
+    width: 100%;
+    object-fit: cover;
+    transition: all .3s ease-in-out;
+}
+
+.country-modal__img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+@media (min-width: 39em) {
+    .country-modal__img {
+        height: 22rem;
+    }
+}
+
+@media (min-width: 75em) {
+    .country-modal__img {
+        height: 100%;
+        margin-right: 3rem;
+        border-radius: 1.5rem;
+    }
+}
+
+.country-modal__info {
+    padding: 1rem;
+}
+
+.country-modal__name {
+    margin-bottom: 1.2rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.country-modal__country-info {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+}
+
+@media (min-width: 75em) {
+    .country-modal__country-info {
+        margin-bottom: 1.7rem;
+    }
+}
+
+.country-modal__country-info:last-child {
+    margin-bottom: 0rem;
+}
+
+.country-modal__country-info--description {
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-style: italic;
+    margin-left: 1rem;
+    letter-spacing: 0.06rem;
 }
 
 /* Animation */
