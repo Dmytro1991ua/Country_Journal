@@ -37,6 +37,7 @@ const runScript = () => {
       })
    };
 
+<<<<<<< HEAD
    // close a modal window on click
    const closeModal = () => {
       modal.classList.toggle("show");
@@ -50,6 +51,8 @@ const runScript = () => {
       }
    };
 
+=======
+>>>>>>> d6ddfcdc5f716c61c08f1ef527dd8b1e3a915052
    fetch("https://restcountries.eu/rest/v2/name/afganistan")
       .then(response => response.json())
       .then(data => console.log(data[0]));
