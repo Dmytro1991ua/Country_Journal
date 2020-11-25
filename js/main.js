@@ -37,8 +37,7 @@ const runScript = () => {
       })
    };
 
-<<<<<<< HEAD
-   // close a modal window on click
+   // close a modal window on click to a btn
    const closeModal = () => {
       modal.classList.toggle("show");
    };
@@ -46,13 +45,11 @@ const runScript = () => {
    //close a modal window by clicking outside it
    const closeModalOverlay = (event) => {
       const target = event.target;
-      if (!target.classList.contains("country-modal__body")) {
+      if (target.classList.contains("show")) {
          closeModal();
       }
    };
 
-=======
->>>>>>> d6ddfcdc5f716c61c08f1ef527dd8b1e3a915052
    fetch("https://restcountries.eu/rest/v2/name/afganistan")
       .then(response => response.json())
       .then(data => console.log(data[0]));
@@ -69,11 +66,11 @@ const runScript = () => {
    // render country cards based on recived data from API
    const renderCountryCard = (countries) => {
       countries.forEach(country => { //iterate over recived countries data to render a specific card with info
-     
-         const countryDetails= document.createElement("a");
+
+         const countryDetails = document.createElement("a");
          countryDetails.classList.add("countries__card");
 
-          countryDetails.innerHTML = `
+         countryDetails.innerHTML = `
                   <figure class="countries__flag">
                      <img src="${country.flag}" alt="country flag" class="countries__img" loading="lazy">
                   </figure>
@@ -95,9 +92,8 @@ const runScript = () => {
          });
 
          countryCardsContainer.appendChild(countryDetails);
-         //countryCardsContainer.insertAdjacentHTML("beforeend", countryDetails);
       });
-      
+
    };
 
    // display occured errors
@@ -179,6 +175,11 @@ const runScript = () => {
    searchInput.addEventListener("keyup", searchCountry);
    btnClose.addEventListener("click", closeModal);
    modal.addEventListener("click", closeModalOverlay)
+   window.addEventListener("keydown", (event) => { // close modal window and overlay by "Escape" key
+      if (event.code === "Escape" && modal.classList.contains("show")) {
+         closeModal();
+      }
+   })
 
 
    //call functions

@@ -498,27 +498,33 @@ body.dark-mode .countries__title {
     background-color: var(--color-floral-white);
     z-index: 5;
     overflow-y: auto;
-<<<<<<< HEAD
     opacity: 0;
     visibility: hidden;
     transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+body.dark-mode .country-modal {
+    background-color: var(--color-lighter-blue);
 }
 
 .country-modal.show {
     opacity: 1;
     visibility: visible;
-=======
->>>>>>> d6ddfcdc5f716c61c08f1ef527dd8b1e3a915052
 }
 
 .country-modal__close {
     position: absolute;
-    top: -0.2rem;
+    top: 1.6rem;
     right: 1rem;
     border: none;
     font-size: 3rem;
     background-color: transparent;
     transition: all .3s ease-in-out;
+}
+
+body.dark-mode .country-modal__close {
+    color: var(--color-white);
 }
 
 .country-modal__close:hover {
@@ -555,6 +561,10 @@ body.dark-mode .countries__title {
     max-width: 40rem;
     overflow: hidden;
     border: 2px solid var(--color-dark-blue);
+}
+
+body.dark-mode .country-modal__body {
+    background-color: var(--color-dark-blue);
 }
 
 @media (min-width: 39em) {
@@ -612,9 +622,16 @@ body.dark-mode .countries__title {
 
 @media (min-width: 75em) {
     .country-modal__img {
+        width: 50rem;
         height: 100%;
         margin-right: 3rem;
         border-radius: 1.5rem;
+    }
+}
+
+@media (min-width: 90em) {
+    .country-modal__img {
+        width: 53rem;
     }
 }
 
@@ -622,10 +639,18 @@ body.dark-mode .countries__title {
     padding: 1rem;
 }
 
+body.dark-mode .country-modal__info {
+    color: var(--color-white);
+}
+
 .country-modal__name {
     margin-bottom: 1.2rem;
     text-align: center;
     text-transform: uppercase;
+}
+
+body.dark-mode .country-modal__name {
+    color: var(--color-mantis);
 }
 
 .country-modal__country-info {
