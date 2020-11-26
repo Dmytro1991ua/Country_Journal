@@ -1,6 +1,7 @@
 "use strict"
 
 const runScript = () => {
+
    //global variables
    const countryCardsContainer = document.querySelector(".countries__body"),
       searchForm = document.querySelector(".search-form"),
@@ -9,6 +10,14 @@ const runScript = () => {
       btnClose = document.querySelector(".country-modal__close"),
       modal = document.querySelector(".country-modal");
 
+   // run and remove preloader after a specific time
+   const preloader = () => {
+      const preloader = document.querySelector(".preloader-container");
+      preloader.classList.add("opacity-0");
+       setTimeout(() => {
+          preloader.style.display = "none";
+       }, 1000);
+   };
 
    // Show and hide dropdown menu onclick
    const showDropdownMenu = () => {
@@ -49,10 +58,6 @@ const runScript = () => {
          closeModal();
       }
    };
-
-   fetch("https://restcountries.eu/rest/v2/name/afganistan")
-      .then(response => response.json())
-      .then(data => console.log(data[0]));
 
    // get and handle recived country data from API
    const getCountryData = () => {
@@ -130,7 +135,7 @@ const runScript = () => {
       const target = event.target.value.toLowerCase(); // get a whatever value typed in an input field
       const countriesName = document.querySelectorAll(".countries__title");
 
-      countriesName.forEach(countryName => { // iterate pver country names
+      countriesName.forEach(countryName => { // iterate over country names
          const countryCard = countryName.parentElement.parentElement;
 
          if (countryName.textContent.toLowerCase().trim().includes(target)) { // if the name of the country includes typed value from input, then show the whole country card
@@ -179,7 +184,8 @@ const runScript = () => {
       if (event.code === "Escape" && modal.classList.contains("show")) {
          closeModal();
       }
-   })
+   });
+   window.addEventListener("load", preloader);
 
 
    //call functions
