@@ -12,5 +12,5 @@ Country_Journal project is a fully responsive, where data (to get a data, a thir
 
 ### HTML/HTML5, CSS3, BEM, JS, Responsive Web Design, Mobile First Approach.
 
-A link on GitHub Pages - https://dmytro1991ua.github.io/Weather_App/
+A link on GitHub Pages - https://dmytro1991ua.github.io/Country_Journal/.
 
