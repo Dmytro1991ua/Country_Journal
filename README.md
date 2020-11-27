@@ -6,7 +6,7 @@ Hey Everyone. Welcome to my journey as a Front-End Developer where I am striving
 
 As a curious developer, who has gained a different from IT sphere experience and educational background (specialist in recreational geography and tourism), I was truly inspired by challenge REST Countries API challenge(https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca) to create an App which allows to search a specific country by its name as well as filter countries by a particular region globally.
 
-Country_Journal project is a fully responsive, where data (to get a data, a third-party library Axios was used) was received from RESTful countries API(https://restcountries.eu/) and rendered into country cards which were nicely displayed nicely on UI in whether light or dark mode.
+Country_Journal project is a fully responsive, where data (to get a data, a third-party library Axios was used) was received from RESTful countries API(https://restcountries.eu/) and rendered into country cards which were nicely displayed on UI in whether light or dark mode.
 
 #### Stack of technologies which were used to develop a particular project: 
 
